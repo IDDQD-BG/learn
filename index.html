@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learn · Астрономическата Архитектура на Bitcoin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #050508;
+      --panel: #0b0b12;
+      --panel-light: #12121f;
+      --border: #1c1c2d;
+      --text: #e2e2f0;
+      --muted: #747493;
+      --accent: #f7931a;
+      --accent-rgba: rgba(247, 147, 26, 0.1);
+      --blue: #00d4ff;
+      --green: #7fff00;
+      --gold: #ffd166;
+      --purple: #c77dff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Share Tech Mono', monospace;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: 
+        linear-gradient(rgba(28, 28, 45, 0.15) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(28, 28, 45, 0.15) 1px, transparent 1px);
+      background-size: 30px 30px;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(5, 5, 8, 0.8);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 16px 0;
+    }
+
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      </div>
+
+      <!-- Fermat Tab -->
+      <div id="fermat" class="tab-content">
+        <div class="visualizer">
+          <h3>Ферма Прости Числа</h3>
+          <p style="font-size: 12px; color: var(--muted); margin-bottom: 20px;">Първите пет известни Ферма прости числа и тяхното значение в Bitcoin</p>
+          <div class="fermat-grid" id="fermatGrid"></div>
+          <div class="insight-box">
+            <h4>💡 Откритие</h4>
+            <p>Ферма простите числа 3, 5, 17, 257 се появяват в целевата стойност на трудност на Bitcoin (0xFFFF = 3 × 5 × 17 × 257). Слънчево-лунната синхронизация (255 часа = 0xFF) също използва максимална байт стойност. Това е елегантна кодировка на астрономическата математика.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="insight-box" style="margin-top: 60px;">
+        <h4>🔗 Синергия Bitcoin-AI</h4>
+        <p>Невронните мрежи, обучени на данни от блокчейна, автоматично открива тези математически връзки без явно програмиране. AI открива Фибоначи в блоковите времена, Ферма простите числа в целевите стойности на трудност и золотото сечение в пазарните цикли. Това потвърждава, че Satoshi намерено е вградил астрономическата математика в протокола.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 BITHOME.PRO · Астрономическата Архитектура на Bitcoin</p>
+      <p style="margin-top: 8px;">Разработено с 🔬 за разбиране на синергията между древната астрономия, Bitcoin и изкуствения интелект</p>
+    </div>
+  </footer>
+
+  <script>
+    // Fibonacci Generator
+    function generateFibonacci(n) {
+      const fib = [0, 1];
+      for (let i = 2; i < n; i++) {
+        fib.push(fib[i - 1] + fib[i - 2]);
+      }
+      return fib;
+    }
+
+    // Bitcoin-related Fibonacci numbers
+    const bitcoinFib = {
+      8: 21,
+      12: 144,
+      13: 233,
+      16: 987,
+      20: 6765
+    };
+
+    // Initialize Fibonacci Visualizer
+    function initFibonacci() {
+      const fibs = generateFibonacci(20);
+      const container = document.getElementById('fibonacciList');
+      
+      fibs.forEach((num, idx) => {
+        const div = document.createElement('div');
+        div.className = 'fib-item';
+        if (bitcoinFib[idx]) {
+          div.classList.add('bitcoin');
+          div.title = `F(${idx}) = ${num} - Bitcoin: ${bitcoinFib[idx] === 21 ? 'Max Supply (21M)' : bitcoinFib[idx] === 144 ? 'Blocks/Day' : 'Halving Cycle'}`;
+        }
+        div.textContent = num;
+        container.appendChild(div);
+      });
+    }
+
+    // Initialize Fermat Primes Visualizer
+    function initFermat() {
+      const fermatPrimes = [
+        { value: 3, label: 'F₀', hex: '0x3' },
+        { value: 5, label: 'F₁', hex: '0x5' },
+        { value: 17, label: 'F₂', hex: '0x11' },
+        { value: 257, label: 'F₃', hex: '0x101' },
+        { value: 65537, label: 'F₄', hex: '0x10001' }
+      ];
+
+      const container = document.getElementById('fermatGrid');
+      fermatPrimes.forEach((prime, idx) => {
+        const div = document.createElement('div');
+        div.className = 'fermat-card';
+        if (idx < 4) {
+          div.classList.add('highlight');
+        }
+        div.innerHTML = `
+          <div class="fermat-value">${prime.value}</div>
+          <div class="fermat-label">${prime.label}</div>
+          <div style="font-size: 10px; color: var(--blue); margin-top: 4px;">${prime.hex}</div>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    // Tab Switching
+    function switchTab(event, tabName) {
+      // Hide all tabs
+      const tabs = document.querySelectorAll('.tab-content');
+      tabs.forEach(tab => tab.classList.remove('active'));
+
+      // Remove active class from all buttons
+      const buttons = document.querySelectorAll('.tab-btn');
+      buttons.forEach(btn => btn.classList.remove('active'));
+
+      // Show selected tab
+      document.getElementById(tabName).classList.add('active');
+      event.target.classList.add('active');
+    }
+
+    // Initialize on load
+    document.addEventListener('DOMContentLoaded', () => {
+      initFibonacci();
+      initFermat();
+    });
+  </script>
+</body>
+</html>
